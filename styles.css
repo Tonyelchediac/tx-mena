@@ -531,5 +531,8 @@
   #preloader {
     height: 100vh;
   }
+    #preloader img{
+    height: 3%;
+  }
   }
   
