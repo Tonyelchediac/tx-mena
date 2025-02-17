@@ -32,7 +32,7 @@ body {
   padding: 1rem 0;
 }
 
-.no-translate {
+.logo {
   unicode-bidi: isolate;
   direction: ltr;
   font-size: 1.5rem;
