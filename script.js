@@ -6,7 +6,14 @@ hamburger.addEventListener('click', () => {
 });
 
 document.querySelectorAll('.nav-links a').forEach((link) => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', function (event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      const targetSection = document.querySelector(this.hash);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
     navLinks.classList.remove('active');
   });
 });
@@ -18,4 +25,14 @@ document.addEventListener('click', (event) => {
   if (!isClickInsideNavLinks && !isClickOnHamburger) {
     navLinks.classList.remove('active');
   }
+});
+
+document.querySelector(".scroll-to-contact").addEventListener("click", function(event) {
+  event.preventDefault();
+  document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
+});
+
+document.querySelector(".scroll-to-project").addEventListener("click", function(event) {
+  event.preventDefault();
+  document.querySelector("#portfolio").scrollIntoView({ behavior: "smooth" });
 });
