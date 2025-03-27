@@ -442,7 +442,7 @@ footer {
   background: #9ca3af;
   color: black;
   text-align: left;
-  padding: 1rem 0;
+  padding: 1.3rem 0;
 }
 
 footer img {
@@ -462,6 +462,11 @@ footer ul li a {
   text-decoration: none;
   color: black;
 }
+
+footer .container p{
+  width: 85%;
+}
+
 
 .gt_float_switcher {
   position: fixed !important;
@@ -588,6 +593,15 @@ footer ul li a {
   .info-item i {
     font-size: 1rem;
     color: black;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .home-content .h1-title-1{
+    font-size: 2rem;
+  }
+  .home-content .h1-title-2{
+    font-size: 2rem;
   }
 }
 
