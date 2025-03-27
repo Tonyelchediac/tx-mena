@@ -32,6 +32,11 @@ document.querySelector(".scroll-to-contact").addEventListener("click", function(
   document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
 });
 
+document.querySelector(".logo").addEventListener("click", function(event) {
+  event.preventDefault();
+  document.querySelector("#home").scrollIntoView({ behavior: "smooth" });
+});
+
 document.querySelector(".scroll-to-project").addEventListener("click", function(event) {
   event.preventDefault();
   document.querySelector("#portfolio").scrollIntoView({ behavior: "smooth" });
