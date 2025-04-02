@@ -94,7 +94,7 @@ function addMessage(text, sender) {
   });
 
   const responses = {
-    "hello": "Hello dear, how can I help you today? I'm here to assist you with any inquiries you may have.",
+    "hello": "Hello dear, how can I help you today? I'm here to assist you with any inquiries you may have about TX-MENA.",
     "about tx": "We specialize in crafting tailored software solutions that empower businesses to thrive in the digital age. Our team of experts combines innovation with expertise to deliver scalable and reliable products. Whether you're looking to build a custom application, migrate to the cloud, or optimize your existing systems, we have the tools and talent to make it happen. Our mission is simple: to help businesses achieve their goals through technology. We believe that every challenge is an opportunity to innovate, and we're committed to delivering solutions that exceed expectations. If you have specific questions about our services or projects, feel free to ask!",
     "price": "Our pricing depends on the project you want to bring to life. For a website, it depends on how much time it will take for designing, coding, and testing. In general, we're using this formula: (design-time/h + coding-time/h) x price per hour. We can provide a more detailed estimate once we understand your project requirements.",
     "support": "You can contact our support team at info.txmena@gmail.com. We're here to help you with any issues or questions you may have. Don't hesitate to reach out!",
