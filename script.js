@@ -77,10 +77,8 @@ function addMessage(text, sender) {
     }
     message.textContent = text;
     chatList.appendChild(message);
-
-    // Scroll to the last message
     setTimeout(() => {
-        message.scrollIntoView({ behavior: "smooth", block: "end" });
+        chatList.scrollTo({ top: chatList.scrollHeight, behavior: "smooth" });
     }, 100);
 }
 
