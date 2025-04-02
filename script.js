@@ -78,7 +78,7 @@ function addMessage(text, sender) {
     message.textContent = text;
     chatList.appendChild(message);
     setTimeout(() => {
-        chatList.scrollTo({ top: chatList.scrollHeight, behavior: "smooth" });
+        chatList.scrollTop = chatList.scrollHeight;
     }, 100);
 }
 
