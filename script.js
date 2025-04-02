@@ -69,16 +69,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const aiOpenButton = document.querySelector(".ai-button");
   const chatList = document.querySelector(".ai-ul ul");
 
-  function addMessage(text, sender) {
-      const message = document.createElement("li");
-      message.classList.add("message", sender);
-      if (sender === "user") {
-          message.style.backgroundColor = "gray";
-      }
-      message.textContent = text;
-      chatList.appendChild(message);
-      chatList.scrollTop = chatList.scrollHeight;
-  }
+function addMessage(text, sender) {
+    const message = document.createElement("li");
+    message.classList.add("message", sender);
+    if (sender === "user") {
+        message.style.backgroundColor = "gray";
+    }
+    message.textContent = text;
+    chatList.appendChild(message);
+
+    // Scroll to the last message
+    setTimeout(() => {
+        message.scrollIntoView({ behavior: "smooth", block: "end" });
+    }, 100);
+}
 
   let aiMessageDisplayed = false;
   aiOpenButton.addEventListener("click", function () {
