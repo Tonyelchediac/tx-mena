@@ -77,8 +77,11 @@ function addMessage(text, sender) {
     }
     message.textContent = text;
     chatList.appendChild(message);
+
+    // Ensure scrolling to the absolute bottom
     setTimeout(() => {
-        chatList.scrollTop = chatList.scrollHeight;
+        const chatContainer = document.querySelector(".ai-ul");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
     }, 100);
 }
 
