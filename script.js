@@ -110,7 +110,7 @@ function addMessage(text, sender) {
       
       addMessage(userInput, "user");
       
-      let matchedResponse = "Sorry, I didn't understand your request.";
+      let matchedResponse = "Sorry, I didn't understand your request. Please explain to me more what you want.";
       for (const keyword in responses) {
           if (userInput.includes(keyword)) {
               matchedResponse = responses[keyword];
