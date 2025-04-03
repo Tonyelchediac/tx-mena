@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (sender === "user") {
         message.style.backgroundColor = "gray";
+message.style.textAlign = "right";
     }
     message.innerHTML = text.replace(/\n/g, "<br>");
 
