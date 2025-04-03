@@ -106,7 +106,7 @@ message.style.textAlign = "right";
 
 const keywordCollections = {
     "greeting": ["hello", "hey", "greetings"],
-    "details": ["details", "information", "about"],
+    "details": ["details", "information", "about tx", "about you"],
     "pricing": ["price", "budget", "pricing", "cost", "fees", "rates"],
     "support": ["support", "help", "assistance", "contact", "aid", "service", "guidance", "customer service", "technical support", "inquiry"],
     "website": ["website", "web development", "web", "web design", "build site", "create website", "information about website"]
