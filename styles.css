@@ -495,11 +495,14 @@ footer .container p{
 }
 
 .ai-container {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s;
+  display: flex;
   justify-content: center;
-  position: fixed; 
+  position: fixed;
   height: 100vh;
-  background: url("images/background.jpg") ;
+  background: url("images/background.jpg");
   background-size: cover;
   width: 100%;
   top: 0;
@@ -508,7 +511,8 @@ footer .container p{
 }
 
 .ai-container.active {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 .ai-header {
@@ -622,6 +626,9 @@ footer .container p{
 }
 
 
+
+
+/* Responsive Design For Tablets */
 @media (max-width: 1000px) {
 
   .header {
@@ -667,7 +674,7 @@ footer .container p{
 
 
 
-/* Responsive Design */
+/* Responsive Design For Mobiles */
 @media (max-width: 768px) {
 
   .header {
