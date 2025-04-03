@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const keywordCollections = {
         "greeting": ["hello", "hey", "hi", "greetings"],
-        "details": ["details", "information", "about tx", "about you", "more info", "company"],
+        "details": ["details", "information", "about tx", "about you", "company"],
         "pricing": ["price", "budget", "pricing", "cost", "fees", "rates", "how much", "charge", "payment"],
         "support": ["support", "help", "assistance", "contact", "aid", "service", "guidance", "customer service", "technical support", "inquiry"],
         "website": ["website", "web development", "web", "web design", "build site", "create website", "information about website", "how to make a website"]
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dots.forEach(dot => dot.style.opacity = "0.3");
             dots[blinkIndex].style.opacity = "1";
             blinkIndex = (blinkIndex + 1) % dots.length;
-        }, 500);
+        }, 250);
 
         typingMessage.setAttribute("blink-interval", blinkInterval);
     }
