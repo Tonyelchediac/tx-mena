@@ -599,7 +599,7 @@ footer .container p{
   font-size: 1rem;
   font-weight: 500;
   overflow-y: auto;
-  max-height: 74vh;
+  max-height: 75%;
   padding: 10px;
   border-radius: 10px;
 }
