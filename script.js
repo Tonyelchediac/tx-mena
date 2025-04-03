@@ -64,70 +64,112 @@ aiCloseButton.addEventListener("click", () => {
 
 // ai conversation
 document.addEventListener("DOMContentLoaded", function () {
-  const inputField = document.querySelector(".ai-input");
-  const sendButton = document.querySelector(".send-button");
-  const aiOpenButton = document.querySelector(".ai-button");
-  const chatList = document.querySelector(".ai-ul ul");
+    const inputField = document.querySelector(".ai-input");
+    const sendButton = document.querySelector(".send-button");
+    const aiOpenButton = document.querySelector(".ai-button");
+    const chatList = document.querySelector(".ai-ul ul");
 
-  function addMessage(text, sender) {
-    const message = document.createElement("li");
-    message.classList.add("message", sender);
+    function addMessage(text, sender) {
+        const message = document.createElement("li");
+        message.classList.add("message", sender);
 
-    if (sender === "user") {
-        message.style.backgroundColor = "gray";
-message.style.textAlign = "right";
+        if (sender === "user") {
+            message.style.backgroundColor = "gray";
+            message.style.textAlign = "right";
+        }
+        message.innerHTML = text.replace(/\n/g, "<br>");
+
+        chatList.appendChild(message);
+
+        setTimeout(() => {
+            const chatContainer = document.querySelector(".ai-ul");
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }, 100);
     }
-    message.innerHTML = text.replace(/\n/g, "<br>");
 
-    chatList.appendChild(message);
+    let aiMessageDisplayed = false;
+    aiOpenButton.addEventListener("click", function () {
+        if (!aiMessageDisplayed) {
+            addMessage("Hello dear, I'm TX-MENA AI. Feel free to ask more about the company and know more details!", "ai");
+            aiMessageDisplayed = true;
+        }
+    });
 
-    setTimeout(() => {
-        const chatContainer = document.querySelector(".ai-ul");
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }, 100);
-}
+    const responses = {
+        "greeting": "Hello! How can I assist you today?",
+        "details": "Here are more details about TX-MENA:\n\nWe specialize in crafting tailored software solutions that empower businesses to thrive in the digital age. Our team of experts combines innovation with expertise to deliver scalable and reliable products...",
+        "pricing": "Our pricing depends on the project. It is calculated based on design, coding, and testing time...",
+        "support": "You can contact our support team at info.txmena@gmail.com.",
+        "website": "A website is a collection of web pages accessible via the internet. Building a website typically involves planning, designing, development, testing, and deployment..."
+    };
 
+    const keywordCollections = {
+        "greeting": ["hello", "hey", "hi", "greetings"],
+        "details": ["details", "information", "about tx", "about you", "more info", "company"],
+        "pricing": ["price", "budget", "pricing", "cost", "fees", "rates", "how much", "charge", "payment"],
+        "support": ["support", "help", "assistance", "contact", "aid", "service", "guidance", "customer service", "technical support", "inquiry"],
+        "website": ["website", "web development", "web", "web design", "build site", "create website", "information about website", "how to make a website"]
+    };
 
-  let aiMessageDisplayed = false;
-  aiOpenButton.addEventListener("click", function () {
-      if (!aiMessageDisplayed) {
-          addMessage("Hello dear, I'm TX-MENA AI. Feel free to ask more about the company and know more details!", "ai");
-          aiMessageDisplayed = true;
-      }
-  });
+    function addTypingIndicator() {
+        const typingMessage = document.createElement("li");
+        typingMessage.classList.add("message", "ai");
+        typingMessage.innerHTML = '<span class="typing-dots">.</span> <span class="typing-dots">.</span> <span class="typing-dots">.</span>';
+        typingMessage.setAttribute("id", "typing-indicator");
+        chatList.appendChild(typingMessage);
 
-  const responses = {
-    "greeting": "Hello! How can I assist you today?",
-    "details": "Here are more details about TX-MENA:\n\nWe specialize in crafting tailored software solutions that empower businesses to thrive in the digital age. Our team of experts combines innovation with expertise to deliver scalable and reliable products. Whether you're looking to build a custom application, migrate to the cloud, or optimize your existing systems, we have the tools and talent to make it happen. Our mission is simple: to help businesses achieve their goals through technology. We believe that every challenge is an opportunity to innovate, and we're committed to delivering solutions that exceed expectations.\n\nFeel free to ask me more about me.",
-    "pricing": "Our pricing depends on the project you want to bring to life. For a website, it depends on how much time it will take for designing, coding, and testing.\nIn general, we're using this formula: (design-time/h + coding-time/h) x price per hour.\nWe can provide a more detailed estimate once we understand your project requirements.\n\nYou can contact our support team at info.txmena@gmail.com.",
-    "support": "You can contact our support team at info.txmena@gmail.com.",
-    "website": "A website is a collection of web pages accessible via the internet. Building a website typically involves several steps:\n\n1. **Planning** - Define the purpose and target audience.\n2. **Designing** - Create wireframes and visual designs.\n3. **Development** - Use HTML, CSS, and JavaScript for frontend; backend technologies like PHP, Node.js, or Python for functionality.\n4. **Testing** - Check for bugs, responsiveness, and performance.\n5. **Deployment** - Host the website on a server and make it live.\n6. **Maintenance** - Regularly update and improve the website.\n\nLet me know if you need help in building one!"
-};
+        // Add blinking effect
+        const dots = typingMessage.querySelectorAll(".typing-dots");
+        let blinkIndex = 0;
+        const blinkInterval = setInterval(() => {
+            dots.forEach(dot => dot.style.opacity = "0.3");
+            dots[blinkIndex].style.opacity = "1";
+            blinkIndex = (blinkIndex + 1) % dots.length;
+        }, 500);
 
-const keywordCollections = {
-    "greeting": ["hello", "hey", "greetings"],
-    "details": ["details", "information", "about tx", "about you"],
-    "pricing": ["price", "budget", "pricing", "cost", "fees", "rates"],
-    "support": ["support", "help", "assistance", "contact", "aid", "service", "guidance", "customer service", "technical support", "inquiry"],
-    "website": ["website", "web development", "web", "web design", "build site", "create website", "information about website"]
-};
+        typingMessage.setAttribute("blink-interval", blinkInterval);
+    }
 
-sendButton.addEventListener("click", function () {
-    const userInput = inputField.value.trim().toLowerCase();
-    if (!userInput) return;
-    
-    addMessage(userInput, "user");
-    
-    let matchedResponse = "Sorry, I didn't understand your request. Explain for me more.";
-    
-    for (const key in keywordCollections) {
-        if (keywordCollections[key].some(keyword => userInput.includes(keyword))) {
-            matchedResponse = responses[key];
-            break;
+    function removeTypingIndicator() {
+        const typingMessage = document.getElementById("typing-indicator");
+        if (typingMessage) {
+            clearInterval(typingMessage.getAttribute("blink-interval"));
+            typingMessage.remove();
         }
     }
-    
-    setTimeout(() => addMessage(matchedResponse, "ai"), 500);
-    inputField.value = "";
+
+    sendButton.addEventListener("click", function () {
+        const userInput = inputField.value.trim().toLowerCase();
+        if (!userInput) return;
+
+        addMessage(userInput, "user");
+
+        let bestMatch = null;
+        let maxMatches = 0;
+
+        for (const key in keywordCollections) {
+            let matchCount = keywordCollections[key].reduce((count, keyword) => 
+                count + (userInput.includes(keyword) ? 1 : 0), 0);
+
+            if (matchCount > maxMatches) {
+                maxMatches = matchCount;
+                bestMatch = key;
+            }
+        }
+
+        let matchedResponse = bestMatch ? responses[bestMatch] : "Sorry, I didn't understand your request. Can you explain more?";
+
+        // Calculate dynamic typing delay (50ms per character, min 1s, max 4s)
+        let typingDelay = Math.min(Math.max(matchedResponse.length * 50, 1000), 4000);
+
+        addTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            addMessage(matchedResponse, "ai");
+        }, typingDelay);
+
+        inputField.value = "";
+    });
+
 });
 });
