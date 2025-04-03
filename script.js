@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dots.forEach(dot => dot.style.opacity = "0.3");
             dots[blinkIndex].style.opacity = "1";
             blinkIndex = (blinkIndex + 1) % dots.length;
-        }, 250);
+        }, 300);
 
         typingMessage.setAttribute("blink-interval", blinkInterval);
     }
