@@ -170,6 +170,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
         inputField.value = "";
     });
-
-});
 });
