@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (sender === "user") {
         message.style.backgroundColor = "gray";
     }
-    // Convert newline characters to <br> tags
     message.innerHTML = text.replace(/\n/g, "<br>");
 
     chatList.appendChild(message);
@@ -99,17 +98,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const responses = {
     "greeting": "Hello! How can I assist you today?",
     "details": "Here are more details about TX-MENA:\n\nWe specialize in crafting tailored software solutions that empower businesses to thrive in the digital age. Our team of experts combines innovation with expertise to deliver scalable and reliable products. Whether you're looking to build a custom application, migrate to the cloud, or optimize your existing systems, we have the tools and talent to make it happen. Our mission is simple: to help businesses achieve their goals through technology. We believe that every challenge is an opportunity to innovate, and we're committed to delivering solutions that exceed expectations.\n\nFeel free to ask me more about me.",
-    "pricing": "Our pricing depends on the project you want to bring to life. For a website, it depends on how much time it will take for designing, coding, and testing. In general, we're using this formula: (design-time/h + coding-time/h) x price per hour. We can provide a more detailed estimate once we understand your project requirements.",
-    "support": "You can contact our support team at support@example.com.",
+    "pricing": "Our pricing depends on the project you want to bring to life. For a website, it depends on how much time it will take for designing, coding, and testing.\nIn general, we're using this formula: (design-time/h + coding-time/h) x price per hour.\nWe can provide a more detailed estimate once we understand your project requirements.\n\nYou can contact our support team at info.txmena@gmail.com.",
+    "support": "You can contact our support team at info.txmena@gmail.com.",
     "website": "A website is a collection of web pages accessible via the internet. Building a website typically involves several steps:\n\n1. **Planning** - Define the purpose and target audience.\n2. **Designing** - Create wireframes and visual designs.\n3. **Development** - Use HTML, CSS, and JavaScript for frontend; backend technologies like PHP, Node.js, or Python for functionality.\n4. **Testing** - Check for bugs, responsiveness, and performance.\n5. **Deployment** - Host the website on a server and make it live.\n6. **Maintenance** - Regularly update and improve the website.\n\nLet me know if you need help in building one!"
 };
 
 const keywordCollections = {
-    "greeting": ["hello", "hi", "hey", "greetings"],
-    "details": ["details", "more info", "information"],
+    "greeting": ["hello", "hey", "greetings"],
+    "details": ["details", "information", "about"],
     "pricing": ["price", "budget", "pricing", "cost", "fees", "rates"],
-    "support": ["support", "help", "assistance", "contact"],
-    "website": ["website", "web development", "web design", "build site", "create website"]
+    "support": ["support", "help", "assistance", "contact", "aid", "service", "guidance", "customer service", "technical support", "inquiry"],
+    "website": ["website", "web development", "web", "web design", "build site", "create website", "information about website"]
 };
 
 sendButton.addEventListener("click", function () {
