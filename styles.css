@@ -612,12 +612,14 @@ footer .container p{
   padding: 0;
 }
 
-.ai-ul li{
-  margin-bottom: 20px;
+.ai-ul li {
+  display: inline-block;
+  max-width: 80%;
   background-color: #333;
   padding: 10px;
   border-radius: 10px;
-width: auto;
+  margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 
