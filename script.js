@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const keywordCollections = {
     "greeting": ["hello", "hi", "hey", "greetings"],
-    "details": ["details", "more info", "information", "about"],
+    "details": ["details", "more info", "information"],
     "pricing": ["price", "budget", "pricing", "cost", "fees", "rates"],
     "support": ["support", "help", "assistance", "contact"],
     "website": ["website", "web development", "web design", "build site", "create website"]
