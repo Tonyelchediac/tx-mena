@@ -502,8 +502,7 @@ footer .container p{
   justify-content: center;
   position: fixed;
   height: 100vh;
-  background: url("images/background.jpg");
-  background-size: cover;
+  background: url("images/background.jpg") no-repeat center 20% / cover;
   width: 100%;
   top: 0;
   left: 0;
