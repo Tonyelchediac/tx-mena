@@ -518,7 +518,6 @@ footer .container p{
   height: 100%;
   background-color: rgba(0, 0, 0, 0.45);
   z-index: 5;
-  pointer-events: none;
 }
 
 .ai-container.active {
