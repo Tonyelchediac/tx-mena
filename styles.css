@@ -630,7 +630,7 @@ footer .container p{
 @media (max-width: 1000px) {
 
   .header {
-    height: 50px;
+  height: 60px;
     top: 0;
     z-index: 10;
   }
@@ -676,7 +676,7 @@ footer .container p{
 @media (max-width: 768px) {
 
   .header {
-    height: 50px;
+    height: 60px;
     top: 0;
     z-index: 10;
   }
