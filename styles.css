@@ -500,8 +500,8 @@ footer .container p{
   transition: opacity 0.2s ease-in-out, visibility 0.2s;
   display: flex;
   justify-content: center;
-  position: fixed;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   background: url("images/background.jpg") no-repeat center 20% / cover;
   width: 100%;
   top: 0;
