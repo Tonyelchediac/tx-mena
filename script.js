@@ -73,10 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const message = document.createElement("li");
         message.classList.add("message", sender);
 
-        if (sender === "user") {
-            message.style.backgroundColor = "gray";
-            message.style.textAlign = "right";
-        }
         message.innerHTML = text.replace(/\n/g, "<br>");
 
         chatList.appendChild(message);
@@ -97,10 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const responses = {
         "greeting": "Hello! How can I assist you today?",
-        "details": "Here are more details about TX-MENA:\n\nWe specialize in crafting tailored software solutions that empower businesses to thrive in the digital age. Our team of experts combines innovation with expertise to deliver scalable and reliable products...",
+        "details": "Here are more details about TX-MENA:\nWe specialize in crafting tailored software solutions that empower businesses to thrive in the digital age. Our team of experts combines innovation with expertise to deliver scalable and reliable products...",
         "pricing": "Our pricing depends on the project. It is calculated based on design, coding, and testing time...",
         "support": "You can contact our support team at info.txmena@gmail.com.",
-        "website": "A website is a collection of web pages accessible via the internet. Building a website typically involves planning, designing, development, testing, and deployment..."
+        "website": "A website is a collection of web pages accessible via the internet. Building a website typically involves planning, designing, development, testing, and deployment...",
+        "applications": "Applications are software programs designed to perform specific tasks for users. They can range from mobile apps to desktop software, and they help streamline processes, enhance productivity, and provide entertainment."
     };
 
     const keywordCollections = {
@@ -108,7 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "details": ["details", "information", "about tx", "about you", "company"],
         "pricing": ["price", "budget", "pricing", "cost", "fees", "rates", "how much", "charge", "payment"],
         "support": ["support", "help", "assistance", "contact", "aid", "service", "guidance", "customer service", "technical support", "inquiry"],
-        "website": ["website", "web development", "web", "web design", "build site", "create website", "information about website", "how to make a website"]
+        "website": ["website", "web development", "web", "web design", "build site", "create website", "information about website", "how to make a website"],
+        "applications": ["applications", "app", "software", "program", "mobile app", "desktop app"]
     };
 
     function addTypingIndicator() {
@@ -118,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
         typingMessage.setAttribute("id", "typing-indicator");
         chatList.appendChild(typingMessage);
 
-        // Add blinking effect
         const dots = typingMessage.querySelectorAll(".typing-dots");
         let blinkIndex = 0;
         const blinkInterval = setInterval(() => {
@@ -138,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    sendButton.addEventListener("click", function () {
+    function handleUserInput() {
         const userInput = inputField.value.trim().toLowerCase();
         if (!userInput) return;
 
@@ -159,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let matchedResponse = bestMatch ? responses[bestMatch] : "Sorry, I didn't understand your request. Can you explain more?";
 
-        // Calculate dynamic typing delay (50ms per character, min 1s, max 4s)
         let typingDelay = Math.min(Math.max(matchedResponse.length * 50, 1000), 4000);
 
         addTypingIndicator();
@@ -169,5 +165,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }, typingDelay);
 
         inputField.value = "";
+    }
+
+    sendButton.addEventListener("click", handleUserInput);
+    inputField.addEventListener("keypress", (event)=> {
+        if (event.key === "Enter") {
+            handleUserInput();
+        }
     });
 });
